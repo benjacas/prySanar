@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="pryPrueba.MainPage">
+
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Tarjeta 1 -->
+            <Frame Padding="20" BackgroundColor="Red" CornerRadius="20" HasShadow="True" Margin="50">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Card1_Tapped" /> <!-- define cual es el gesto que tiene que tomar el frmae -->
+                </Frame.GestureRecognizers>
+
+                <VerticalStackLayout>
+                    <Image Source="img_suelo_pelvico.jpg" Margin="-20 -20 0 "/>
+                    <Label Text="Ejercicios" FontSize="30" HorizontalOptions="Center" />
+                    <Label Text="Ver lista de ejercicios"  HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Tarjeta 2 -->
+            <Frame Padding="20" BackgroundColor="White" CornerRadius="20" HasShadow="True">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Card2_Tapped" />
+                </Frame.GestureRecognizers>
+
+                <VerticalStackLayout>
+                    <Label Text="Progreso" FontSize="22" HorizontalOptions="Center" />
+                    <Label Text="Ver estadísticas" FontSize="14" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
