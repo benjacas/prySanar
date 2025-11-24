@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+					xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+	
 
-    <!-- PALETA DE COLORES -->
+    <!--PALETA DE COLORES-->
     <Color x:Key="PrimaryColor">#FF6B9A</Color>
     <Color x:Key="SecondaryColor">#FFC3DA</Color>
     <Color x:Key="BackgroundColor">#FFF6FA</Color>
@@ -9,20 +11,20 @@
     <Color x:Key="TextLight">#666</Color>
     <Color x:Key="CardShadow">#000000</Color>
 
-    <!--GRADIENTE PRINCIPAL -->
+    <!--GRADIENTE PRINCIPAL-->
     <LinearGradientBrush x:Key="PinkGradient" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Color="#FF8BB5" Offset="0"/>
         <GradientStop Color="#FF6B9A" Offset="1"/>
     </LinearGradientBrush>
 
-    <!--SOMBRA GENERAL -->
+    <!--SOMBRA GENERAL--> 
     <Shadow x:Key="DefaultShadow"
             Brush="{StaticResource CardShadow}"
             Offset="0,7"
             Radius="15"
             Opacity="0.25"/>
 
-    <!--ESTILOS DE TEXTO -->
+    <!--ESTILOS DE TEXTO--> 
     <Style TargetType="Label" x:Key="TitleLabel">
         <Setter Property="FontSize" Value="32"/>
         <Setter Property="FontAttributes" Value="Bold"/>
@@ -36,17 +38,40 @@
         <Setter Property="HorizontalOptions" Value="Center"/>
     </Style>
 
-    <!-- ESTILO DE TARJETAS (FRAMES) -->
-    <Style TargetType="Frame" x:Key="CardStyle">
-        <Setter Property="CornerRadius" Value="25"/>
-        <Setter Property="Padding" Value="20"/>
-        <Setter Property="Background" Value="{StaticResource PinkGradient}"/>
-        <Setter Property="HasShadow" Value="True"/>
-        <Setter Property="Shadow" Value="{StaticResource DefaultShadow}"/>
-        <Setter Property="Margin" Value="25"/>
-    </Style>
+	<!-- ESTILO DE TARJETA MODERNA -->
+	<Style x:Key="ModernCard" TargetType="Frame">
+		<Setter Property="CornerRadius" Value="30" />
+		<Setter Property="HasShadow" Value="True" />
+		<!--<Setter Property="Shadow">
+			<Shadow Brush="{StaticResource ShadowColor}"
+                    Offset="0,8"
+                    Radius="18"
+                    Opacity="0.25"/>
+		</Setter>-->
+		<Setter Property="Padding" Value="0" />
+		<Setter Property="Margin" Value="20,25" />
 
-    <!--ESTILO PARA BOTONES -->
+	</Style>
+	
+	<!-- ESTILO PARA TÍTULOS DE TARJETAS -->
+	<Style x:Key="CardTitle" TargetType="Label">
+		<Setter Property="FontSize" Value="24" />
+		<Setter Property="FontAttributes" Value="Bold" />
+		<Setter Property="TextColor" Value="#333" />
+		<Setter Property="HorizontalOptions" Value="Center" />
+		<Setter Property="Margin" Value="0,10,0,0" />
+	</Style>
+
+	<!-- ESTILO PARA SUBTÍTULOS DE TARJETAS -->
+	<Style x:Key="CardSubtitle" TargetType="Label">
+		<Setter Property="FontSize" Value="14" />
+		<Setter Property="Opacity" Value="0.7" />
+		<Setter Property="TextColor" Value="#555" />
+		<Setter Property="HorizontalOptions" Value="Center" />
+		<Setter Property="Margin" Value="0,2,0,15" />
+	</Style>
+	
+    <!--ESTILO PARA BOTONES-->
     <Style TargetType="Button" x:Key="PrimaryButton">
         <Setter Property="CornerRadius" Value="20"/>
         <Setter Property="FontSize" Value="18"/>
@@ -57,22 +82,22 @@
         <Setter Property="Margin" Value="10"/>
     </Style>
 
-    <!-- ENTRYS (cuadros de texto) -->
+     <!--ENTRYS (cuadros de texto)--> 
     <Style TargetType="Entry" x:Key="RoundedEntry">
         <Setter Property="BackgroundColor" Value="White"/>
         <Setter Property="TextColor" Value="{StaticResource TextDark}"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="HeightRequest" Value="45"/>
         <Setter Property="Margin" Value="10"/>
-        <Setter Property="Padding" Value="10"/>
+        <!--<Setter Property="Padding" Value="10"/>-->
         <Setter Property="Keyboard" Value="Default"/>
-        <Setter Property="Stroke" Value="LightGray"/>
-        <Setter Property="StrokeThickness" Value="1.5"/>
-        <Setter Property="StrokeShape">
-            <Setter.Value>
+        <!--<Setter Property="Stroke" Value="LightGray"/>-->
+        <!--<Setter Property="StrokeThickness" Value="1.5"/>-->
+        <!--<Setter Property="StrokeShape">-->
+            <!--<Setter.Value>
                 <RoundRectangle CornerRadius="15"/>
-            </Setter.Value>
-        </Setter>
+            </Setter.Value>-->
+        
     </Style>
-
+	
 </ResourceDictionary>

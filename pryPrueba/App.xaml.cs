@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui.Controls.StyleSheets;
 
 namespace pryPrueba
 {
@@ -7,6 +8,7 @@ namespace pryPrueba
         public App()
         {
             InitializeComponent();
+
         }
 
         protected override Window CreateWindow(IActivationState? activationState)

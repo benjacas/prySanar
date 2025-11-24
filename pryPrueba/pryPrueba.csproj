@@ -78,6 +78,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiCss Update="Resources\Styles\Estilos.css">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </MauiCss>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="frmListaEjercicios.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
