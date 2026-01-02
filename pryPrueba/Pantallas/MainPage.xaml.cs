@@ -17,7 +17,7 @@
             await card.ScaleTo(1.05, 100, Easing.CubicIn);   // 5% más grande
             await card.ScaleTo(1.0, 100, Easing.CubicOut);   // vuelve al tamaño normal
 
-            // Acción después de la animación
+            // Acción después de la animación - abre la lista de ejercicios
             await Navigation.PushAsync(new frmListaEjercicios());
         }
 

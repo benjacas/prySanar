@@ -84,7 +84,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="frmListaEjercicios.xaml">
+	  <MauiXaml Update="Pantallas\frmListaEjercicios.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pantallas\frmMiSesion.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\Estilos.xaml">

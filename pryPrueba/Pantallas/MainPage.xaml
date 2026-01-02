@@ -24,17 +24,18 @@
             </Frame>
 
             <!-- Tarjeta 2 -->
+            <!--
             <Frame class="frame">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Card2_Tapped" />
-                </Frame.GestureRecognizers>
+                </Framdfdfe.GestureRecognizers>
 
                 <VerticalStackLayout>
                     <Label Text="Progreso"  />
                     <Label Text="Ver estadísticas" />
                 </VerticalStackLayout>
             </Frame>
-
+            -->
         </VerticalStackLayout>
     </ScrollView>
 

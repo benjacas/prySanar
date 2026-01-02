@@ -42,16 +42,16 @@
 	<Style x:Key="ModernCard" TargetType="Frame">
 		<Setter Property="CornerRadius" Value="30" />
 		<Setter Property="HasShadow" Value="True" />
-		<!--<Setter Property="Shadow">
+		<Setter Property="Shadow">
 			<Shadow Brush="{StaticResource ShadowColor}"
                     Offset="0,8"
                     Radius="18"
                     Opacity="0.25"/>
-		</Setter>-->
+		</Setter>
 		<Setter Property="Padding" Value="0" />
 		<Setter Property="Margin" Value="20,25" />
-
-	</Style>
+        <Setter Property="BackgroundColor" Value="Pink"/>
+    </Style>
 	
 	<!-- ESTILO PARA TÍTULOS DE TARJETAS -->
 	<Style x:Key="CardTitle" TargetType="Label">
