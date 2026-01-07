@@ -48,4 +48,14 @@ public partial class frmMiSesion : ContentPage
         await SelectCard(DificilCard, Color.FromArgb("#F44336"),"Dificil");
     }
 
+    private async void BtnContinuar_Clicked (object sender, EventArgs e)
+    {
+        if (string.IsNullOrEmpty(_dificultadSeleccionada))
+            return;
+
+        await Navigation.PushAsync(
+            new frmBurbuja(_dificultadSeleccionada)
+        );
+    }
+
 }
