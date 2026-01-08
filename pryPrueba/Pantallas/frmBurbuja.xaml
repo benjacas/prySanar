@@ -6,28 +6,52 @@
              BackgroundColor="White">
 
 
-        <VerticalStackLayout Spacing="30" VerticalOptions="Center" HorizontalOptions="Center">
+        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+            
+            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                  RowSpacing="30">
 
-            <Label x:Name="lblEstado"
-                   Text="Inhalar"
-                   FontSize="28"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center"/>
-            <!--fijarse si se puede hacer el estilo para los lbl-->
+                <Label x:Name="lblTemporizador"
+                       Grid.Row="0"
+                       Text="05:00"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       TextColor="Black"/>
+                    <!--fijarse si se puede hacer el estilo para los lbl-->
+
+                <Label x:Name="lblEstado"
+                           Grid.Row="1"
+                           Text="Inhalar"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           TextColor="Black"/>
+                    <!--fijarse si se puede hacer el estilo para los lbl-->
 
 
-            <!-- CÍRCULO ANIMADO -->
-            <Border x:Name="Circulo"
-                    WidthRequest="150"
-                    HeightRequest="150"
-                    StrokeShape="Ellipse"
-                    BackgroundColor="#E91E63"/>
+                <!-- CÍRCULO ANIMADO -->
+                <Border x:Name="Circulo"
+                        Grid.Row="2"
+                        WidthRequest="150"
+                        HeightRequest="150"
+                        StrokeShape="Ellipse"/>
 
 
-            <Label x:Name="LblTiempo"
-                   Text="4"
-                   FontSize="20"
-                   HorizontalOptions="Center"/>
+                <Label x:Name="lblTiempo"
+                       Grid.Row="3"
+                       Text="4"
+                       FontSize="20"
+                       HorizontalOptions="Center"
+                       TextColor="Black"/>
 
+                <Button x:Name="BtnPausa"
+                        Grid.Row="4"
+                        Text="Pausar"
+                        WidthRequest="140"
+                        HeightRequest="45"
+                        CornerRadius="14"
+                        Clicked="BtnPausa_Clicked"/>
+        </Grid>
         </VerticalStackLayout>
 </ContentPage>

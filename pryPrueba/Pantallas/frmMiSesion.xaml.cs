@@ -54,8 +54,7 @@ public partial class frmMiSesion : ContentPage
             return;
 
         await Navigation.PushAsync(
-            new frmBurbuja(_dificultadSeleccionada)
-        );
+            new frmBurbuja(_dificultadSeleccionada));
     }
 
 }
