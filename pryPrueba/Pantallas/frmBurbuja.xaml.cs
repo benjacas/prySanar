@@ -13,6 +13,7 @@ public partial class frmBurbuja : ContentPage
     //Temporizador
     TimeSpan _tiempoRestante = TimeSpan.FromMinutes(5);
     IDispatcherTimer _timerSesion;
+    TaskCompletionSource<bool> _tcsTemporizador;
 
     //Pausar - Reaundar
     bool _pausado = false;
@@ -28,21 +29,44 @@ public partial class frmBurbuja : ContentPage
 	}
 
 
-	async Task Respirar() //Esto despues se puede modificar los segundos que se exhala e inhala para cambiar de dificultad, por ahora probemos si esto funciona
-	{
-        //switch (_dificultad)
-        //{
-        //    case = "Facil":
-                    
-        //    break;
-              
-        //}
-		_animado = true;
+    async Task IniciarSesion()
+    {
+        for (int ciclo = 0; ciclo < 3; ciclo++)
+        {
+            await IniciarBloqueRespiracion();
 
-		while (_animado)
-		{
-            for (int i = 0;i < 3; i++)//for para que entre en un bucle la primer fase
-            {
+            // descanso solo si no es el último ciclo
+            if (ciclo < 2)
+                await IniciarDescanso();
+        }
+
+        FinalizarSesion();
+    }
+
+    async Task IniciarBloqueRespiracion()
+    {
+        _tiempoRestante = TimeSpan.FromMinutes(5);
+        _animado = true;
+
+        var respiracionTask = RespirarLoop();
+        await Temporizador();     // espera 5 minutos
+        _animado = false;         // corta respiración
+        await respiracionTask;    // espera a que termine limpio
+    }
+    async Task RespirarLoop()
+    {
+        while (_animado)
+        {
+            await Respirar();
+        }
+    }
+
+
+
+    async Task Respirar() //Esto despues se puede modificar los segundos que se exhala e inhala para cambiar de dificultad, por ahora probemos si esto funciona
+	{
+	
+
                 //inhalar
                 lblEstado.Text = "Inhalar";
                 AnimarCirculo(_escalaActual, 1.4, 4000);
@@ -52,7 +76,7 @@ public partial class frmBurbuja : ContentPage
                 //VibrarSuave();
 
 
-                if (!_animado) break;
+                if (!_animado) return;
 
                 //Sostener
                 lblEstado.Text = "Sostener";
@@ -61,7 +85,7 @@ public partial class frmBurbuja : ContentPage
                 Circulo.BackgroundColor = Colors.Green;
                 //await VibrarDoble();
 
-                if (!_animado) break;
+                if (!_animado) return;
 
                 //Exhalar
                 lblEstado.Text = "Exhalar";
@@ -71,65 +95,77 @@ public partial class frmBurbuja : ContentPage
                 Circulo.BackgroundColor = Colors.Purple;
 
 
-                if (!_animado) break;
+                if (!_animado) return;
                 //VibrarSuave();
-            }
-        }
+     
+        
 			
 	}
 
     async Task IniciarDescanso()
     {
-        //Descanso
         lblEstado.Text = "Descanso";
         _faseActual = "Descanso";
-        Circulo.BackgroundColor = Colors.LightBlue;// dejamos el círculo quieto en su escala actual
-        await ContarRespiracion(10);
+
+        Circulo.AbortAnimation("RespiracionAnim");
+        Circulo.BackgroundColor = Colors.LightBlue;
+
+        await ContarDescanso(10);
     }
-    async Task Temporizador()
+
+    async Task ContarDescanso(int segundos)
     {
+        for (int i = segundos; i > 0; i--)
+        {
+            lblTiempo.Text = i.ToString();
+            await Task.Delay(1000);
+        }
+    }
+
+
+    Task Temporizador()
+    {
+        _tcsTemporizador = new TaskCompletionSource<bool>();
 
         _timerSesion = Dispatcher.CreateTimer();
         _timerSesion.Interval = TimeSpan.FromSeconds(1);
 
         _timerSesion.Tick += (s, e) =>
         {
-            if (_pausado) return; //si está pausado, frena
-            _tiempoRestante = _tiempoRestante.Subtract(TimeSpan.FromSeconds(1));
+            if (_pausado) return;
 
+            _tiempoRestante -= TimeSpan.FromSeconds(1);
             lblTemporizador.Text = _tiempoRestante.ToString(@"mm\:ss");
 
             if (_tiempoRestante <= TimeSpan.Zero)
             {
-                FinalizarSesion();
+                _timerSesion.Stop();
+                _animado = false;
+                _tcsTemporizador.TrySetResult(true);
             }
         };
+
         _timerSesion.Start();
+        return _tcsTemporizador.Task;
     }
 
-    async void FinalizarSesion()
+
+    void FinalizarSesion()
     {
+        lblEstado.Text = "Sesión finalizada";
+        Circulo.AbortAnimation("RespiracionAnim");
         _timerSesion?.Stop();
-        _animado = false;
-
-        lblEstado.Text = "Sesion Finalizada";
-        lblTiempo.Text = "";
-        Circulo.ScaleTo(1, 200);
-
-        await DisplayAlert("Bien hecho", "Completaste tu sesión de respiración", "OK"); //MENSAJE DE FINALIZACION
-
-
-        // Opcional: volver atrás
-        // await Navigation.PopAsync();
     }
 
-    protected override void OnAppearing()
+
+    protected override async void OnAppearing()
 	{
 		base.OnAppearing();
 
         _animado = true;
-        _ = Respirar();
-		Temporizador();
+        await IniciarSesion();
+        //_ = Respirar();
+		//Temporizador();
 	}
 
     protected override void OnDisappearing()
