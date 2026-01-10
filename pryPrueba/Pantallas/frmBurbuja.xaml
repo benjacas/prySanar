@@ -15,11 +15,12 @@
                     <Grid ColumnDefinitions="*,*,*" Padding="15">
                             <!-- 1RA -->
                         <Border x:Name="PrimeralCard"
-                                            Grid.Column="0"
-                                            Stroke="#4CAF50"
-                                            StrokeThickness="1"
-                                            StrokeShape="RoundRectangle 16"
-                                            Padding="10">
+                                Grid.Column="0"
+                                BackgroundColor="Transparent"
+                                Stroke="#4CAF50"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 16"
+                                Padding="10">
 
                             <VerticalStackLayout Spacing="6">
                                     <Label Text="1"
@@ -32,28 +33,30 @@
 
                             <!-- 2DA -->
                         <Border x:Name="SegundaCard"
-                                            Grid.Column="1"
-                                            Stroke="#FF9800"
-                                            StrokeThickness="1"
-                                            StrokeShape="RoundRectangle 16"
-                                            Padding="10">
+                                Grid.Column="1"
+                                Stroke="#FF9800"
+                                BackgroundColor="Transparent"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 16"
+                                Padding="10">
 
                             <VerticalStackLayout Spacing="6">
                                     <Label Text="2"
-                                                   FontSize="20"
-                                                   FontAttributes="Bold"
-                                                   TextColor="#FF9800"
-                                                   HorizontalOptions="Center"/>
+                                           FontSize="20"
+                                           FontAttributes="Bold"
+                                           TextColor="#FF9800"
+                                           HorizontalOptions="Center"/>
                                 </VerticalStackLayout>
                             </Border>
 
                             <!-- 3RA -->
                             <Border x:Name="TerceraCard"
-                                            Grid.Column="2"
-                                            Stroke="#F44336"
-                                            StrokeThickness="1"
-                                            StrokeShape="RoundRectangle 16"
-                                            Padding="10">
+                                    Grid.Column="2"
+                                    Stroke="#F44336"
+                                    BackgroundColor="Transparent"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 16"
+                                    Padding="10">
 
                             <VerticalStackLayout Spacing="6">
                                 <Label Text="3"

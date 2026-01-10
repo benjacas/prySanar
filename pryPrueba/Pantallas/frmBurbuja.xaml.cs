@@ -33,6 +33,7 @@ public partial class frmBurbuja : ContentPage
     {
         for (int ciclo = 0; ciclo < 3; ciclo++)
         {
+            MarcarCiclo(ciclo);
             await IniciarBloqueRespiracion();
 
             // descanso solo si no es el último ciclo
@@ -57,31 +58,75 @@ public partial class frmBurbuja : ContentPage
     {
         while (_animado)
         {
-            await Respirar();
+            await RespirarSegunDificultad();
+        }
+    }
+
+    async Task RespirarSegunDificultad()
+    {
+        while (_animado)
+        {
+            switch (_dificultad)
+            {
+                case "Facil": 
+                    for (int i = 0; i < 6; i++)
+                    {
+                        await Respirar(2000,2);
+                    }
+
+                    for (int i = 0; i < 1; i++)
+                    {
+                        await Respirar(5000,5);
+                    }
+                break;
+
+                case "Medio":
+                    for (int i = 0; i < 6; i++)
+                    {
+                        await Respirar(3000, 3);
+                    }
+
+                    for (int i = 0; i < 1; i++)
+                    {
+                        await Respirar(10000, 10);
+                    }
+                    break;
+
+                case "Dificil":
+                    for (int i = 0; i < 1; i++)
+                    {
+                        await Respirar(2000, 2);
+                    }
+
+                    for (int i = 0; i < 1; i++)
+                    {
+                        await Respirar(15000, 15);
+                    }
+                    break;
+            }
         }
     }
 
 
 
-    async Task Respirar() //Esto despues se puede modificar los segundos que se exhala e inhala para cambiar de dificultad, por ahora probemos si esto funciona
+    async Task Respirar(uint duracionAnimacion, int contarRespiracion) //Esto despues se puede modificar los segundos que se exhala e inhala para cambiar de dificultad, por ahora probemos si esto funciona
 	{
-	
 
                 //inhalar
                 lblEstado.Text = "Inhalar";
-                AnimarCirculo(_escalaActual, 1.4, 4000);
+                AnimarCirculo(_escalaActual, 1.4, duracionAnimacion);
                 _faseActual = "Inhalar";
-                await ContarRespiracion(4);
+                await ContarRespiracion(contarRespiracion);
                 Circulo.BackgroundColor = Colors.Pink;
                 //VibrarSuave();
-
 
                 if (!_animado) return;
 
                 //Sostener
                 lblEstado.Text = "Sostener";
                 _faseActual = "Sostener";
-                await ContarRespiracion(2);
+                await ContarRespiracion(contarRespiracion);
+                AnimarCirculo(_escalaActual, 1.4, duracionAnimacion);//probando
                 Circulo.BackgroundColor = Colors.Green;
                 //await VibrarDoble();
 
@@ -90,17 +135,15 @@ public partial class frmBurbuja : ContentPage
                 //Exhalar
                 lblEstado.Text = "Exhalar";
                 _faseActual = "Exhalar";
-                AnimarCirculo(_escalaActual, 1.0, 4000);
-                await ContarRespiracion(4);
+                AnimarCirculo(_escalaActual, 1.0, duracionAnimacion);
+                await ContarRespiracion(contarRespiracion);
                 Circulo.BackgroundColor = Colors.Purple;
 
 
                 if (!_animado) return;
                 //VibrarSuave();
-     
-        
-			
-	}
+  
+    }
 
     async Task IniciarDescanso()
     {
@@ -164,8 +207,6 @@ public partial class frmBurbuja : ContentPage
 
         _animado = true;
         await IniciarSesion();
-        //_ = Respirar();
-		//Temporizador();
 	}
 
     protected override void OnDisappearing()
@@ -250,6 +291,39 @@ public partial class frmBurbuja : ContentPage
             easing: Easing.SinInOut
         );
     }
+
+    void MarcarCiclo(int cicloActual)
+    {
+        var cards = new[]
+        {
+        PrimeralCard,
+        SegundaCard,
+        TerceraCard
+
+        };
+
+        var colores = new[]
+        {
+        Colors.LightGreen,
+        Colors.Orange,
+        Colors.LightCoral
+        };
+
+        for (int i = 0; i < cards.Length; i++)
+        {
+            if (i == cicloActual)
+            {
+                cards[i].BackgroundColor = colores[i];
+                cards[i].StrokeThickness = 2;
+            }
+            else
+            {
+                cards[i].BackgroundColor = Colors.Transparent;
+                cards[i].StrokeThickness = 1;
+            }
+        }
+    }
+
 
     void VibrarSuave()
     {
