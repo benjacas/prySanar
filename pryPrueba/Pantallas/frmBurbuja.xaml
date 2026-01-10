@@ -8,11 +8,69 @@
 
         <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
             
-            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
                   RowSpacing="30">
+                <!--FASES-->
+                <Frame Grid.Row="0" BackgroundColor="White">
+                    <Grid ColumnDefinitions="*,*,*" Padding="15">
+                            <!-- 1RA -->
+                        <Border x:Name="PrimeralCard"
+                                            Grid.Column="0"
+                                            Stroke="#4CAF50"
+                                            StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 16"
+                                            Padding="10">
 
+                            <VerticalStackLayout Spacing="6">
+                                    <Label Text="1"
+                                                   FontSize="20"
+                                                   FontAttributes="Bold"
+                                                   TextColor="#4CAF50"
+                                                   HorizontalOptions="Center"/>
+                                </VerticalStackLayout>
+                            </Border>
+
+                            <!-- 2DA -->
+                        <Border x:Name="SegundaCard"
+                                            Grid.Column="1"
+                                            Stroke="#FF9800"
+                                            StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 16"
+                                            Padding="10">
+
+                            <VerticalStackLayout Spacing="6">
+                                    <Label Text="2"
+                                                   FontSize="20"
+                                                   FontAttributes="Bold"
+                                                   TextColor="#FF9800"
+                                                   HorizontalOptions="Center"/>
+                                </VerticalStackLayout>
+                            </Border>
+
+                            <!-- 3RA -->
+                            <Border x:Name="TerceraCard"
+                                            Grid.Column="2"
+                                            Stroke="#F44336"
+                                            StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 16"
+                                            Padding="10">
+
+                            <VerticalStackLayout Spacing="6">
+                                <Label Text="3"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="#F44336"
+                                       HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                    </Border>
+                </Grid>
+                </Frame>
+
+
+
+            <!--JUEGO-->    
                 <Label x:Name="lblTemporizador"
-                       Grid.Row="0"
+                       Grid.Row="1"
                        Text="05:00"
                        FontSize="22"
                        FontAttributes="Bold"
@@ -21,7 +79,7 @@
                     <!--fijarse si se puede hacer el estilo para los lbl-->
 
                 <Label x:Name="lblEstado"
-                           Grid.Row="1"
+                           Grid.Row="2"
                            Text="Inhalar"
                            FontSize="28"
                            FontAttributes="Bold"
@@ -32,26 +90,26 @@
 
                 <!-- CÍRCULO ANIMADO -->
                 <Border x:Name="Circulo"
-                        Grid.Row="2"
+                        Grid.Row="3"
                         WidthRequest="150"
                         HeightRequest="150"
                         StrokeShape="Ellipse"/>
 
 
                 <Label x:Name="lblTiempo"
-                       Grid.Row="3"
+                       Grid.Row="4"
                        Text="4"
                        FontSize="20"
                        HorizontalOptions="Center"
                        TextColor="Black"/>
 
                 <Button x:Name="BtnPausa"
-                        Grid.Row="4"
+                        Grid.Row="5"
                         Text="Pausar"
                         WidthRequest="140"
                         HeightRequest="45"
                         CornerRadius="14"
                         Clicked="BtnPausa_Clicked"/>
-        </Grid>
+            </Grid>
         </VerticalStackLayout>
 </ContentPage>

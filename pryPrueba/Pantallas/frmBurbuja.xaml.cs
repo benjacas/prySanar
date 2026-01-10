@@ -30,43 +30,62 @@ public partial class frmBurbuja : ContentPage
 
 	async Task Respirar() //Esto despues se puede modificar los segundos que se exhala e inhala para cambiar de dificultad, por ahora probemos si esto funciona
 	{
+        //switch (_dificultad)
+        //{
+        //    case = "Facil":
+                    
+        //    break;
+              
+        //}
 		_animado = true;
 
-		while (_animado /*&& !_pausado*/)
+		while (_animado)
 		{
-			//inhalar
-			lblEstado.Text = "Inhalar";
-            AnimarCirculo(_escalaActual,1.4, 4000);
-            _faseActual = "Inhalar";
-            await ContarRespiracion(4);
-           // await Circulo.ScaleTo(1.4, 4000, Easing.SinInOut);
-            Circulo.BackgroundColor = Colors.Pink;
-            VibrarSuave();
-            
+            for (int i = 0;i < 3; i++)//for para que entre en un bucle la primer fase
+            {
+                //inhalar
+                lblEstado.Text = "Inhalar";
+                AnimarCirculo(_escalaActual, 1.4, 4000);
+                _faseActual = "Inhalar";
+                await ContarRespiracion(4);
+                Circulo.BackgroundColor = Colors.Pink;
+                //VibrarSuave();
 
-            if (!_animado) break;
 
-            //Sostener
-            lblEstado.Text = "Sostener";
-            _faseActual = "Sostener";
-            await ContarRespiracion(2);
-            AnimarCirculo(_escalaActual, 1.4, 1000);
-            //await Task.Delay(2000);
-            Circulo.BackgroundColor = Colors.Green;
-            await VibrarDoble();
+                if (!_animado) break;
 
-            if (!_animado) break;
+                //Sostener
+                lblEstado.Text = "Sostener";
+                _faseActual = "Sostener";
+                await ContarRespiracion(2);
+                Circulo.BackgroundColor = Colors.Green;
+                //await VibrarDoble();
 
-            //Exhalar
-            lblEstado.Text = "Exhalar";
-            _faseActual = "Exhalar";
-            AnimarCirculo(_escalaActual, 1.0, 4000);
-            await ContarRespiracion(4);
-            Circulo.BackgroundColor = Colors.Purple;
-            VibrarSuave();
+                if (!_animado) break;
+
+                //Exhalar
+                lblEstado.Text = "Exhalar";
+                _faseActual = "Exhalar";
+                AnimarCirculo(_escalaActual, 1.0, 4000);
+                await ContarRespiracion(4);
+                Circulo.BackgroundColor = Colors.Purple;
+
+
+                if (!_animado) break;
+                //VibrarSuave();
+            }
         }
+			
 	}
 
+    async Task IniciarDescanso()
+    {
+        //Descanso
+        lblEstado.Text = "Descanso";
+        _faseActual = "Descanso";
+        Circulo.BackgroundColor = Colors.LightBlue;// dejamos el círculo quieto en su escala actual
+        await ContarRespiracion(10);
+    }
     async Task Temporizador()
     {
 
@@ -79,6 +98,7 @@ public partial class frmBurbuja : ContentPage
             _tiempoRestante = _tiempoRestante.Subtract(TimeSpan.FromSeconds(1));
 
             lblTemporizador.Text = _tiempoRestante.ToString(@"mm\:ss");
+
             if (_tiempoRestante <= TimeSpan.Zero)
             {
                 FinalizarSesion();
@@ -97,6 +117,7 @@ public partial class frmBurbuja : ContentPage
         Circulo.ScaleTo(1, 200);
 
         await DisplayAlert("Bien hecho", "Completaste tu sesión de respiración", "OK"); //MENSAJE DE FINALIZACION
+
 
         // Opcional: volver atrás
         // await Navigation.PopAsync();
