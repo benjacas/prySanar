@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="pryPrueba.frmBurbuja"
              Title="Burbuja"
-             BackgroundColor="White">
+             BackgroundColor="White"
+             Shell.NavBarIsVisible="False">
 
 
         <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
@@ -109,9 +110,11 @@
                 <Button x:Name="BtnPausa"
                         Grid.Row="5"
                         Text="Pausar"
+                        TextColor="White"
                         WidthRequest="140"
                         HeightRequest="45"
                         CornerRadius="14"
+                        BackgroundColor="#221460"
                         Clicked="BtnPausa_Clicked"/>
             </Grid>
         </VerticalStackLayout>

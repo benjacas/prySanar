@@ -2,115 +2,172 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="pryPrueba.frmMiSesion"
-             Title="Mi Sesion">
+             Title="Mi Sesion"
+             Padding="0"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
 
-    <Grid RowDefinitions="*,Auto">
+    <Grid RowDefinitions="Auto,*">
 
-        <!-- CONTENIDO SCROLLEABLE -->
-        <ScrollView Grid.Row="0">
-            <VerticalStackLayout Padding="20" Spacing="20" BackgroundColor="White">
+        <!-- HEADER -->
+        <Border Grid.Row="0"
+                BackgroundColor="#4CAF50"
+                StrokeShape="RoundRectangle 0,0,32,32"
+                Padding="0">
 
-                <Frame Style="{StaticResource ModernCard}">
-                    <Grid ColumnDefinitions="*,*,*" Padding="15">
-                        <!-- FACIL -->
-                        <Border x:Name="FacilCard"
-                            Grid.Column="0"
-                            Stroke="#4CAF50"
-                            StrokeThickness="1"
-                            StrokeShape="RoundRectangle 16"
-                            Padding="10">
+            <Grid Grid.Row="0"
+                  BackgroundColor="#4CAF50">
+                <!-- Icono -->
+                <Image Source="img_logo_sanar.png"
+                       HorizontalOptions="Center"
+                       HeightRequest="150"
+                       Grid.Column="0"/>
+            </Grid>
+        </Border>
 
-                            <Border.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="FacilTapped"/>
-                            </Border.GestureRecognizers>
+        <Grid Grid.Row="1">
 
-                            <VerticalStackLayout Spacing="6">
-                                <Label Text="Fácil"
-                                   FontSize="20"
-                                   FontAttributes="Bold"
-                                   TextColor="#4CAF50"
-                                   HorizontalOptions="Center"/>
 
-                                <Label Text="Ejercicios faciles para empezar"
-                                   FontSize="12"
-                                   Opacity="0.7"
-                                   HorizontalTextAlignment="Center"/>
+            <Grid RowDefinitions="*,Auto">
+
+                <!-- CONTENIDO SCROLLEABLE -->
+                <ScrollView Grid.Row="0">
+                    <VerticalStackLayout Padding="20" Spacing="20" BackgroundColor="White">
+
+                        <Frame Style="{StaticResource ModernCard}" BackgroundColor="#dad8e2">
+                            <Grid ColumnDefinitions="*,*,*" Padding="15">
+                                <!-- FACIL -->
+                                <Border x:Name="FacilCard"  
+                                        Grid.Column="0"
+                                        Stroke="#4CAF50"
+                                        StrokeThickness="1"
+                                        StrokeShape="RoundRectangle 16"
+                                        Padding="10">
+
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="FacilTapped"/>
+                                    </Border.GestureRecognizers>
+
+                                    <VerticalStackLayout Spacing="6">
+                                        <Label Text="Fácil"
+                                               FontSize="20"
+                                               FontAttributes="Bold"
+                                               TextColor="#4CAF50"
+                                               HorizontalOptions="Center"/>
+
+                                        <Label Text="Ejercicios faciles para empezar"
+                                               FontSize="12"
+                                               Opacity="0.7"
+                                               TextColor="Black"
+                                               HorizontalTextAlignment="Center"/>
+                                    </VerticalStackLayout>
+                                </Border>
+
+                                <!-- MEDIO -->
+                                <Border x:Name="MedioCard"
+                                        Grid.Column="1"
+                                        Stroke="#FF9800"
+                                        StrokeThickness="1"
+                                        StrokeShape="RoundRectangle 16"
+                                        Padding="10">
+
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="MedioTapped"/>
+                                    </Border.GestureRecognizers>
+
+                                    <VerticalStackLayout Spacing="6">
+                                        <Label Text="Medio"
+                                               FontSize="20"
+                                               FontAttributes="Bold"
+                                               TextColor="#FF9800"
+                                               HorizontalOptions="Center"/>
+
+                                        <Label Text="Rutinas de intensidad moderada"
+                                               FontSize="12"
+                                               Opacity="0.7"
+                                               TextColor="Black"
+                                               HorizontalTextAlignment="Center"/>
+                                    </VerticalStackLayout>
+                                </Border>
+
+                                <!-- DIFICIL -->
+                                <Border x:Name="DificilCard"
+                                        Grid.Column="2"
+                                        Stroke="#F44336"
+                                        StrokeThickness="1"
+                                        StrokeShape="RoundRectangle 16"
+                                        Padding="10">
+
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="DificilTapped"/>
+                                    </Border.GestureRecognizers>
+
+                                    <VerticalStackLayout Spacing="6">
+                                        <Label Text="Difícil"
+                                               FontSize="20"
+                                               FontAttributes="Bold"
+                                               TextColor="#F44336"
+                                               HorizontalOptions="Center"/>
+
+                                        <Label Text="Ejercicios avanzados y exigentes"
+                                               FontSize="12"
+                                               TextColor="Black"
+                                               Opacity="0.7"
+                                               HorizontalTextAlignment="Center"/>
+                                    </VerticalStackLayout>
+                                </Border>
+                            </Grid>
+                        </Frame>
+
+                        <Frame Grid.Row="1"
+                               BackgroundColor="White"
+                               Style="{StaticResource ModernCard}">
+
+                            <VerticalStackLayout Spacing="1">
+
+                                <Label Text="Cómo hacer el ejercicio correctamente"
+                                       FontSize="15"
+                                       TextColor="Black"
+                                       HorizontalTextAlignment="Start"
+                                       Style="{StaticResource CardTitle}"/>
+
+                                <Image Source="img_suelo_pelvico_tutorial.jpeg"
+                                       HeightRequest="300"
+                                       Aspect="AspectFit"/>
+
+
+                                <Label Text="Gluteos, muslos y abdominales deben estar relajados, colocá tus manos encima para asegurarte de que no estén contraídos"
+                                       TextColor="Black"
+                                       HorizontalTextAlignment="Center"
+                                       Style="{StaticResource CardSubtitle}"/>
                             </VerticalStackLayout>
-                        </Border>
 
-                        <!-- MEDIO -->
-                        <Border x:Name="MedioCard"
-                            Grid.Column="1"
-                            Stroke="#FF9800"
-                            StrokeThickness="1"
-                            StrokeShape="RoundRectangle 16"
-                            Padding="10">
+                        </Frame>
 
-                            <Border.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="MedioTapped"/>
-                            </Border.GestureRecognizers>
+                    </VerticalStackLayout>
+                </ScrollView>
 
-                            <VerticalStackLayout Spacing="6">
-                                <Label Text="Medio"
-                                   FontSize="20"
-                                   FontAttributes="Bold"
-                                   TextColor="#FF9800"
-                                   HorizontalOptions="Center"/>
+                <Grid Grid.Row="1"
+                      BackgroundColor="White"
+                      Padding="20,20,20,30"
+                      RowDefinitions="Auto">
+                    <!-- BOTÓN FIJO ABAJO -->
+                    <Button Grid.Row="1"
+                            x:Name="BtnContinuar"
+                            Style="{StaticResource PrimaryButton}"
+                            Text="Continuar"
+                            IsEnabled="False"
+                            Opacity="0.5"
+                            Margin="20"
+                            HeightRequest="55"
+                            Clicked="BtnContinuar_Clicked"/>
+                </Grid>
 
-                                <Label Text="Rutinas de intensidad moderada"
-                                   FontSize="12"
-                                   Opacity="0.7"
-                                   HorizontalTextAlignment="Center"/>
-                            </VerticalStackLayout>
-                        </Border>
+            </Grid>
 
-                        <!-- DIFICIL -->
-                        <Border x:Name="DificilCard"
-                            Grid.Column="2"
-                            Stroke="#F44336"
-                            StrokeThickness="1"
-                            StrokeShape="RoundRectangle 16"
-                            Padding="10">
-
-                            <Border.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="DificilTapped"/>
-                            </Border.GestureRecognizers>
-
-                            <VerticalStackLayout Spacing="6">
-                                <Label Text="Difícil"
-                                   FontSize="20"
-                                   FontAttributes="Bold"
-                                   TextColor="#F44336"
-                                   HorizontalOptions="Center"/>
-
-                                <Label Text="Ejercicios avanzados y exigentes"
-                                   FontSize="12"
-                                   Opacity="0.7"
-                                   HorizontalTextAlignment="Center"/>
-                            </VerticalStackLayout>
-                        </Border>
-                    </Grid>
-                </Frame>
-
-            </VerticalStackLayout>
-        </ScrollView>
-
-        <Grid Grid.Row="1"
-              BackgroundColor="White"
-              Padding="20,20,20,30"
-              RowDefinitions="Auto">
-            <!-- BOTÓN FIJO ABAJO -->
-            <Button Grid.Row="1"
-                    x:Name="BtnContinuar"
-                    Style="{StaticResource PrimaryButton}"
-                    Text="Continuar"
-                    IsEnabled="False"
-                    Opacity="0.5"
-                    Margin="20"
-                    HeightRequest="55"
-                    Clicked="BtnContinuar_Clicked"/>   
         </Grid>
-        
-    </Grid>
+    </Grid> 
+
+    
 
 </ContentPage>

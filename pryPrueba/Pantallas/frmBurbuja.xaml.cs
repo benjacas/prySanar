@@ -1,6 +1,6 @@
 namespace pryPrueba;
 using Microsoft.Maui.Essentials;
-
+using pryPrueba.Pantallas;
 
 public partial class frmBurbuja : ContentPage
 {
@@ -31,6 +31,7 @@ public partial class frmBurbuja : ContentPage
 
     async Task IniciarSesion()
     {
+        DeviceDisplay.KeepScreenOn = true;//para que no se apague la pantalla   
         for (int ciclo = 0; ciclo < 3; ciclo++)
         {
             MarcarCiclo(ciclo);
@@ -193,11 +194,13 @@ public partial class frmBurbuja : ContentPage
     }
 
 
-    void FinalizarSesion()
+    async void FinalizarSesion()
     {
         lblEstado.Text = "Sesión finalizada";
         Circulo.AbortAnimation("RespiracionAnim");
         _timerSesion?.Stop();
+
+        await Navigation.PushAsync(new PantallaFinalBurbuja());
     }
 
 
@@ -213,7 +216,7 @@ public partial class frmBurbuja : ContentPage
     {
         base.OnDisappearing();
         _animado = false;
-
+        DeviceDisplay.KeepScreenOn = false;//para que se pueda apagar la pantalla cuando se sale del formulario
         _timerSesion?.Stop();
     }
 

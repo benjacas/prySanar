@@ -2,22 +2,61 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="pryPrueba.frmListaEjercicios"
-             Title=" Lista de Ejercicios">
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20" BackgroundColor="White">
-            <Frame Style="{StaticResource ModernCard}">
+             Title=" Lista de Ejercicios"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+    
+    
+    <Grid RowDefinitions="Auto,*">
 
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="CardBurbuja_Tapped"/>
-                    <!--este es el nombre que se le da a la tarjeta cuando se hace tap-->
-                </Frame.GestureRecognizers>
+        <!-- HEADER -->
+        <Border Grid.Row="0"
+        BackgroundColor="#4CAF50"
+        StrokeShape="RoundRectangle 0,0,32,32"
+        Padding="0">
 
-                <VerticalStackLayout>
-                    <Image Source="img_burbuja.jpg" />
-                    <Label Text="Burbúja" Style="{StaticResource CardTitle}"/>
-                    <Label Text="2 SESIONES DE ENTRENAMIENTO/ SEMANA - 20 MINUTOS" Style="{StaticResource CardSubtitle}" />
+            <Grid Grid.Row="0"
+          BackgroundColor="#4CAF50">
+                <!-- Icono -->
+                <Image Source="img_logo_sanar.png"
+               HorizontalOptions="Center"
+               HeightRequest="150"
+                Grid.Column="0"/>
+
+                <!--<Grid RowDefinitions="Auto,Auto"
+              ColumnDefinitions="Auto,*"
+              VerticalOptions="Center">
+
+            VerticalStackLayout Grid.Column="1" Margin="20 ,0,0,0">
+            por si se nececsita poner algo al lado
+        </VerticalStackLayout
+
+    </Grid>-->
+            </Grid>
+        </Border>
+
+        <!--CONTENIDO-->
+        <Grid Grid.Row="1">
+            <ScrollView>
+                <VerticalStackLayout Padding="20" Spacing="20" BackgroundColor="White">
+                    <Frame Style="{StaticResource ModernCard}">
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CardBurbuja_Tapped"/>
+                            <!--este es el nombre que se le da a la tarjeta cuando se hace tap-->
+                        </Frame.GestureRecognizers>
+
+                        <VerticalStackLayout>
+                            <Image Source="img_burbuja.jpg" />
+                            <Label Text="Burbúja" Style="{StaticResource CardTitle}"/>
+                            <Label VerticalTextAlignment="Center" 
+                                   Text="El color de la burbúja será diferente dependiendo de la acción"
+                                   Style="{StaticResource CardSubtitle}" />
+                        </VerticalStackLayout>
+                    </Frame>
                 </VerticalStackLayout>
-            </Frame>
-        </VerticalStackLayout>
-    </ScrollView>
+            </ScrollView>
+        </Grid>
+    </Grid>
+
 </ContentPage>

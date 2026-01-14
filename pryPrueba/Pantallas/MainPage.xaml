@@ -2,41 +2,71 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="pryPrueba.MainPage"
-             Title="SANAR">
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+    
+
+        
+        <Grid RowDefinitions="Auto,*" BackgroundColor="Transparent">
+
+        <!-- HEADER -->
+        <Border Grid.Row="0"
+        BackgroundColor="#4CAF50"
+        StrokeShape="RoundRectangle 0,0,32,32"
+        Padding="0">
+
+            <Grid Grid.Row="0"
+          BackgroundColor="#4CAF50">
+                <!-- Icono -->
+                <Image Source="img_logo_sanar.png"
+               HorizontalOptions="Center"
+               HeightRequest="150"
+                Grid.Column="0"/>
+
+                <!--<Grid RowDefinitions="Auto,Auto"
+                      ColumnDefinitions="Auto,*"
+                      VerticalOptions="Center">
+
+                    VerticalStackLayout Grid.Column="1" Margin="20 ,0,0,0">
+                    por si se nececsita poner algo al lado
+                </VerticalStackLayout
+
+                </Grid>-->
+            </Grid>
+        </Border>
 
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20" BackgroundColor="White">
 
-            <!-- Tarjeta 1 -->
-            <Frame Style="{StaticResource ModernCard}">
+        <!-- CONTENIDO -->
+        <Grid Grid.Row="1">
+            <!-- tu contenido actual -->
+            <ScrollView>
+                <VerticalStackLayout Padding="20" Spacing="20" BackgroundColor="White">
+
+                    <!-- Tarjeta 1 -->
+                    <Frame Style="{StaticResource ModernCard}">
 
 
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="Card1_Tapped" /> <!-- define cual es el gesto que tiene que tomar el frame -->
-                </Frame.GestureRecognizers>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Card1_Tapped" />
+                            <!-- define cual es el gesto que tiene que tomar el frame -->
+                        </Frame.GestureRecognizers>
 
-                <VerticalStackLayout>
-                    <Image Source="img_suelo_pelvico.jpg" />
-                    <Label Text="Ejercicios" Style="{StaticResource CardTitle}"/>
-                    <Label Text="Ver lista de ejercicios" Style="{StaticResource CardSubtitle}" />
+                        <VerticalStackLayout>
+                            <Image Source="img_suelo_pelvico.jpg" />
+                            <Label Text="Ejercicios" Style="{StaticResource CardTitle}"/>
+                            <Label Text="Ver lista de ejercicios" Style="{StaticResource CardSubtitle}" />
+                        </VerticalStackLayout>
+                    </Frame>
                 </VerticalStackLayout>
-            </Frame>
+            </ScrollView>
 
-            <!-- Tarjeta 2 -->
-            <!--
-            <Frame class="frame">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="Card2_Tapped" />
-                </Framdfdfe.GestureRecognizers>
+        </Grid>
+    </Grid>
 
-                <VerticalStackLayout>
-                    <Label Text="Progreso"  />
-                    <Label Text="Ver estadísticas" />
-                </VerticalStackLayout>
-            </Frame>
-            -->
-        </VerticalStackLayout>
-    </ScrollView>
+
+
+
+
 
 </ContentPage>

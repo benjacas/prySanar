@@ -44,7 +44,7 @@
         <Setter Property="HasShadow" Value="True" />
         <Setter Property="Padding" Value="0" />
 		<Setter Property="Margin" Value="20,25" />
-        <Setter Property="BackgroundColor" Value="Pink"/>
+        <Setter Property="BackgroundColor" Value="#9c5086"/>
     </Style>
 
 
@@ -52,7 +52,7 @@
 	<Style x:Key="CardTitle" TargetType="Label">
 		<Setter Property="FontSize" Value="24" />
 		<Setter Property="FontAttributes" Value="Bold" />
-		<Setter Property="TextColor" Value="#333" />
+		<Setter Property="TextColor" Value="White" />
 		<Setter Property="HorizontalOptions" Value="Center" />
 		<Setter Property="Margin" Value="0,10,0,0" />
 	</Style>
@@ -61,7 +61,7 @@
 	<Style x:Key="CardSubtitle" TargetType="Label">
 		<Setter Property="FontSize" Value="14" />
 		<Setter Property="Opacity" Value="0.7" />
-		<Setter Property="TextColor" Value="#555" />
+		<Setter Property="TextColor" Value="White" />
 		<Setter Property="HorizontalOptions" Value="Center" />
 		<Setter Property="Margin" Value="0,2,0,15" />
 	</Style>
@@ -71,7 +71,7 @@
         <Setter Property="CornerRadius" Value="20"/>
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="TextColor" Value="White"/>
-        <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
+        <Setter Property="Background" Value="#22145f"/>
         <Setter Property="Padding" Value="15,10"/>
         <Setter Property="Shadow" Value="{StaticResource DefaultShadow}"/>
         <Setter Property="Margin" Value="10"/>
