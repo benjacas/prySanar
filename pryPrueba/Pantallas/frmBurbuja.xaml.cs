@@ -115,30 +115,31 @@ public partial class frmBurbuja : ContentPage
 
                 //inhalar
                 lblEstado.Text = "Inhalar";
+                Circulo.BackgroundColor = Colors.Green;
                 AnimarCirculo(_escalaActual, 1.4, duracionAnimacion);
                 _faseActual = "Inhalar";
                 await ContarRespiracion(contarRespiracion);
-                Circulo.BackgroundColor = Colors.Pink;
+                
                 //VibrarSuave();
 
                 if (!_animado) return;
 
                 //Sostener
+                Circulo.BackgroundColor = Color.FromRgba("#4173b9");
                 lblEstado.Text = "Sostener";
                 _faseActual = "Sostener";
                 await ContarRespiracion(contarRespiracion);
                 AnimarCirculo(_escalaActual, 1.4, duracionAnimacion);//probando
-                Circulo.BackgroundColor = Colors.Green;
                 //await VibrarDoble();
 
                 if (!_animado) return;
 
                 //Exhalar
+                Circulo.BackgroundColor = Colors.Purple;
                 lblEstado.Text = "Exhalar";
                 _faseActual = "Exhalar";
                 AnimarCirculo(_escalaActual, 1.0, duracionAnimacion);
                 await ContarRespiracion(contarRespiracion);
-                Circulo.BackgroundColor = Colors.Purple;
 
 
                 if (!_animado) return;
@@ -219,6 +220,27 @@ public partial class frmBurbuja : ContentPage
         DeviceDisplay.KeepScreenOn = false;//para que se pueda apagar la pantalla cuando se sale del formulario
         _timerSesion?.Stop();
     }
+
+    protected override bool OnBackButtonPressed()
+    {
+        MainThread.BeginInvokeOnMainThread(async () =>
+        {
+            bool salir = await DisplayAlert(
+                "Salir de la sesión",
+                "¿Estás seguro de que querés salir? La sesión se perderá.",
+                "Sí, salir",
+                "Cancelar");
+
+            if (salir)
+            {
+                FinalizarSesion();
+                await Navigation.PushAsync(new MainPage());
+            }
+        });
+
+        return true; // bloquea la salida automática
+    }
+
 
     async Task ContarRespiracion(int segundos)
     {

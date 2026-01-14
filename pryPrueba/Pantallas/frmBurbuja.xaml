@@ -84,6 +84,7 @@
 
                 <Label x:Name="lblEstado"
                            Grid.Row="2"
+                           Style="{StaticResource SubtitleLabel}"
                            Text="Inhalar"
                            FontSize="28"
                            FontAttributes="Bold"
@@ -98,9 +99,15 @@
                         WidthRequest="150"
                         HeightRequest="150"
                         StrokeShape="Ellipse"/>
+                
+                
+                <Border Grid.Row="3"
+                        WidthRequest="210"
+                        HeightRequest="210"
+                        StrokeShape="Ellipse"/>
 
 
-                <Label x:Name="lblTiempo"
+            <Label x:Name="lblTiempo"
                        Grid.Row="4"
                        Text="4"
                        FontSize="20"
